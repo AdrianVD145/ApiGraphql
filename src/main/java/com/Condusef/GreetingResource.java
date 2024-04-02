@@ -1,4 +1,4 @@
-package com.Condusef;
+package com.condusef;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
