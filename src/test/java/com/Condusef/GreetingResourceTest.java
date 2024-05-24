@@ -14,7 +14,7 @@ class GreetingResourceTest {
           .when().get("/hello")
           .then()
              .statusCode(200)
-             .body(is("Hello from Quarkus REST"));
+             .body(is("35280 Providencia Ejido Tlahualilo Durango null 35251 10 35251 null 15 036 1409 Rural null"));
     }
 
 }

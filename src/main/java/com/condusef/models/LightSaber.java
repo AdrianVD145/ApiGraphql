@@ -1,4 +1,4 @@
-package com.condusef.entities;
+package com.condusef.models;
 
 public enum LightSaber {
     RED, BLUE, GREEN

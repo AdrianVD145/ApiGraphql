@@ -1,4 +1,4 @@
-package com.condusef;
+package com.condusef.service;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -7,10 +7,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.condusef.entities.Ally;
-import com.condusef.entities.Film;
-import com.condusef.entities.Hero;
-import com.condusef.entities.LightSaber;
+import com.condusef.models.Ally;
+import com.condusef.models.Film;
+import com.condusef.models.Hero;
+import com.condusef.models.LightSaber;
 
 import jakarta.enterprise.context.ApplicationScoped;
 

@@ -1,4 +1,4 @@
-package com.condusef.entities;
+package com.condusef.models;
 
 import java.util.ArrayList;
 import java.util.List;

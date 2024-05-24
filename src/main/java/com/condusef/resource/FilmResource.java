@@ -1,4 +1,4 @@
-package com.condusef;
+package com.condusef.resource;
 
 import java.util.List;
 
@@ -8,9 +8,10 @@ import org.eclipse.microprofile.graphql.Name;
 import org.eclipse.microprofile.graphql.Query;
 import org.eclipse.microprofile.graphql.Source;
 
-import com.condusef.entities.Ally;
-import com.condusef.entities.Film;
-import com.condusef.entities.Hero;
+import com.condusef.models.Ally;
+import com.condusef.models.Film;
+import com.condusef.models.Hero;
+import com.condusef.service.GalaxyService;
 
 import jakarta.inject.Inject;
 
@@ -34,12 +35,14 @@ public class FilmResource {
     }
 
     @Query
-    public List<Ally> allies() {
+    public List<Ally> Allies() {
         return service.getAllAllies();
     }
 
     public List<Hero> heroes(@Source Film film) {
         return service.getHeroesByFilm(film);
     }
+
+    
 
 }
