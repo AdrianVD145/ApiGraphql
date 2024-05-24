@@ -1,7 +1,6 @@
 package com.condusef.resource;
 
 import java.util.List;
-import java.util.concurrent.CompletionStage;
 
 import org.eclipse.microprofile.graphql.Description;
 import org.eclipse.microprofile.graphql.GraphQLApi;
@@ -28,7 +27,7 @@ public class CPMexicanoResourceCache {
 
     @Mutation
     @Description("Add a CPMexicano to the cache")
-    public String addCPMexicanoCache(@Name("key") String key, @Name("cpMexicano") CPMexicanoCache cpMexicano) {
+    public String addCPMexicanoCache(@Name("key") String key) {
 
         try {
             List<CPMexicanoCache> cpMexicanoList = service.getAllCPMexicanoCache();
@@ -49,10 +48,43 @@ public class CPMexicanoResourceCache {
         return cache.get(key);
     }
 
-    @Query("allCPMexicanoCache")
-    @Description("Get all CPMexicano from Mexico")
+    @Query
+    @Description("Get all CPMexicano from the cache")
     public List<CPMexicanoCache> getAllCPMexicanoCache() {
-        return service.getAllCPMexicanoCache();
+        return (List<CPMexicanoCache>) cache.values();
     }
+
+    @Query
+    @Description("Get a CPMexicano from the d_codigo")
+    public CPMexicanoCache getCPMexicanoByCodigo(@Name("d_codigo") String d_codigo) {
+        return cache.values().stream().filter(cp -> cp.d_codigo().equals(d_codigo)).findFirst().orElse(null);
+    }
+
+    @Query
+    @Description("Get a CPMexicano from the d_asenta")
+    public List<CPMexicanoCache> getCPMexicanoByAsenta(@Name("d_asenta") String d_asenta) {
+        return cache.values().stream().filter(cp -> cp.d_asenta().equals(d_asenta)).toList();
+    }
+
+
+    @Query
+    @Description("Get a CPMexicano from the D_mnpio")
+    public CPMexicanoCache getCPMexicanoByMnpio(@Name("D_mnpio") String D_mnpio) {
+        return cache.values().stream().filter(cp -> cp.D_mnpio().equals(D_mnpio)).findFirst().orElse(null);
+    }
+
+    @Query
+    @Description("Get a CPMexicano from the d_estado")
+    public List<CPMexicanoCache> getCPMexicanoByEstado(@Name("d_estado") String d_estado) {
+        return cache.values().stream().filter(cp -> cp.d_estado().equals(d_estado)).toList();
+    }
+
+    @Query
+    @Description("Get the size of the cache")
+    public int getCacheSize() {
+        return cache.size();
+    }
+
+
 
 }
