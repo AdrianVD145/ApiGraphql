@@ -1,11 +1,10 @@
 package com.condusef.init;
 
 
-import java.util.List;
 
 import org.infinispan.client.hotrod.RemoteCache;
 
-import com.condusef.models.CPMexicanoCache;
+import com.condusef.models.Cp;
 import com.condusef.service.CPMexicanoServiceCache;
 
 import io.quarkus.infinispan.client.Remote;
@@ -20,9 +19,9 @@ public class Init {
     @Inject
     CPMexicanoServiceCache service;
 
-     @Inject
+    @Inject
     @Remote("CpMexicano")
-    RemoteCache<String, CPMexicanoCache> cache;
+    RemoteCache<String, Cp> cache;
 
 
     void onStart(@Observes StartupEvent ev) {
@@ -44,16 +43,17 @@ public class Init {
         return "Datos cargados correctamente.";
     }
     private void SubirCache() {
-   
+ 
         try {
-            List<CPMexicanoCache> cpMexicanoList = service.getAllCPMexicanoCache();
-            if (!cpMexicanoList.isEmpty()) {
-                cache.put("CpMexicano", cpMexicanoList.get(1));
-            }
-
+            Cp cpMexicanoList = service.getAllCPMexicanoCache();
+           
+            cache.put("CpMexicano", cpMexicanoList);
+            
         } catch (Exception e) {
             e.printStackTrace();
-        }   
+        }
+
+
     }
 
 }

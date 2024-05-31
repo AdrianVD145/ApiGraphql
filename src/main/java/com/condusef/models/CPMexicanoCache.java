@@ -1,8 +1,8 @@
 package com.condusef.models;
 
-import org.infinispan.protostream.annotations.Proto;
+//import org.infinispan.protostream.annotations.Proto;
 
-@Proto
+//@Proto
  public record CPMexicanoCache(
      String d_codigo,
      String d_asenta,
@@ -22,7 +22,3 @@ import org.infinispan.protostream.annotations.Proto;
 ){
 
 }
-
-
-
-

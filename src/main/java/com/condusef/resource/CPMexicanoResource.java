@@ -19,31 +19,31 @@ public class CPMexicanoResource {
     CPMexicanoService service;
 
     @Query("allCPMexicano")
-    @Description("Get all CPMexicano from Mexico")
+    @Description("Obtener todos los CP de Mexico")
     public List<CPMexicano> getAllCPMexicano() {
         return service.getAllCPMexicano();
     }
 
     @Query
-    @Description("Get a CPMexicano by Codigo from Mexico")
+    @Description("Obtener un CP de Mexico por Codigo")
     public CPMexicano getCPMexicanoByCodigo(@Name("Codigo") String codigo) {
         return service.getCPMexicanoByCodigo(codigo);
     }
 
     @Query
-    @Description("Get a CPMexicano by Estadofrom Mexico")
+    @Description("Obtener un CP de Mexico por Estado")
     public List<CPMexicano> getCPMexicanoByEstado(@Name("Estado") String estado) {
         return service.getCPMexicanoByEstado(estado);
     }
 
     @Query
-    @Description("Get a CPMexicano by Municipio from Mexico")
+    @Description("Obtener un CP de Mexico por Municipio")
     public List<CPMexicano> getCPMexicanoByMunicipio(@Name("Municipio") String municipio) {
         return service.getCPMexicanoByMunicipio(municipio);
     }
 
     @Query
-    @Description("Get a CPMexicano by Asenta from Mexico")
+    @Description("Obtener un CP de Mexico por Asenta")
     public List<CPMexicano> getCPMexicanoByAsenta(@Name("Asenta") String asenta) {
         return service.getCPMexicanoByAsenta(asenta);
     }
