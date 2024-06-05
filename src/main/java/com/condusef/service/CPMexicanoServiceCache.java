@@ -25,7 +25,7 @@ public class CPMexicanoServiceCache {
 
             Connection connection = DatabaseConnection.getConnection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT TOP 2000 * FROM CPMexicano");
+            ResultSet resultSet = statement.executeQuery("SELECT TOP 10 * FROM CPMexicano");
 
             while (resultSet.next()) {
                 
