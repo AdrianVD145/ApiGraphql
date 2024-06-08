@@ -6,6 +6,7 @@ import org.infinispan.protostream.annotations.Proto;
 
 @Proto
 public record Cp(
+
 List<CPMexicanoCache> cpMexicanoCacheList
 
 ){}
