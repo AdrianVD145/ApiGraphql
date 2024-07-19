@@ -1,0 +1,33 @@
+services:
+  app:
+    container_name: "Apigraphql"
+    build: 
+      context: .
+      dockerfile: src/main/docker/Dockerfile.jvm
+    ports:
+      - "8080:8080"
+    environment:
+      - QUARKUS_INFINISPAN_CLIENT_HOSTS=Infinispan:11222
+      - QUARKUS_INFINISPAN_CLIENT_USERNAME=admin
+      - QUARKUS_INFINISPAN_CLIENT_PASSWORD=password
+      - QUARKUS_URL_SQL=jdbc:sqlserver://localhost:1434/SQLEXPRESS;databaseName=Catalog;trustServerCertificate=true
+      - QUARKUS_USERNAME_SQL=sa
+      - QUARKUS_PASSWORD_SQL=12345678
+    depends_on:
+      - Infinispan
+    networks:
+      - app-network
+
+  Infinispan:
+    container_name: "Infinispan"
+    image: quay.io/infinispan/server:15.0
+    environment:
+      USER: admin
+      PASS: password
+    ports:
+      - "11222:11222"
+    networks:
+      - app-network
+
+networks:
+  app-network:

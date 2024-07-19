@@ -1,6 +1,7 @@
 package com.condusef.init;
 
 import org.infinispan.client.hotrod.RemoteCache;
+import org.infinispan.client.hotrod.RemoteCacheManager;
 
 import com.condusef.models.Cp;
 import com.condusef.service.CPMexicanoServiceCache;
@@ -19,7 +20,11 @@ public class Init {
 
     @Inject
     @Remote("CpMexicano")
-    RemoteCache<Integer, Cp> cache;
+    RemoteCache<Integer, Cp> Remotecache;
+    
+    @Inject
+    RemoteCacheManager cacheManager;
+
 
     void onStart(@Observes StartupEvent ev) {
 
@@ -37,6 +42,7 @@ public class Init {
                 "Veracruz de Ignacio de la Llave", "Yucatán", "Zacatecas"
         };
 
+        // alcaldias rangos maximos
         int[] KeysEstados = { 16 , 20, 22 , 23 , 24, 27, 28, 30, 33, 35, 38, 41, 43, 49, 57,
              61, 62, 63, 67, 71, 75, 76, 77, 79, 82, 85, 86, 89, 90, 96, 97, 99
         };
@@ -45,7 +51,7 @@ public class Init {
             String EstadoCp = EstadosCp[i];
             int KeyEstado = KeysEstados[i];
 
-            if (cache.containsKey(KeyEstado)) {
+            if (Remotecache.containsKey(KeyEstado)) {
                 System.out.println("Datos existentes en cache de " + EstadoCp);
                 continue;
             }
@@ -54,7 +60,7 @@ public class Init {
             SubirCache(EstadoCp, KeyEstado);
             
 
-            if (!cache.containsKey(KeyEstado)) {
+            if (!Remotecache.containsKey(KeyEstado)) {
                 System.out.println("Error al cargar los datos de :" + EstadoCp);
             }
                       
@@ -67,7 +73,7 @@ public class Init {
         try {
             Cp cpMexicanoList = service.ConsultarCp(EstadoCp);
 
-            cache.put(KeyEstado, cpMexicanoList);
+            Remotecache.put(KeyEstado, cpMexicanoList);
 
         } catch (Exception e) {
             e.printStackTrace();
