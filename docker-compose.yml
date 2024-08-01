@@ -1,25 +1,24 @@
 services:
   app:
-    container_name: "Apigraphql"
     build: 
       context: .
       dockerfile: src/main/docker/Dockerfile.jvm
     ports:
       - "8080:8080"
     environment:
-      - QUARKUS_INFINISPAN_CLIENT_HOSTS=Infinispan:11222
+      - QUARKUS_INFINISPAN_CLIENT_HOSTS=infinispan:11222
       - QUARKUS_INFINISPAN_CLIENT_USERNAME=admin
       - QUARKUS_INFINISPAN_CLIENT_PASSWORD=password
-      - QUARKUS_URL_SQL=jdbc:sqlserver://localhost:1434/SQLEXPRESS;databaseName=Catalog;trustServerCertificate=true
-      - QUARKUS_USERNAME_SQL=sa
-      - QUARKUS_PASSWORD_SQL=12345678
+      - QUARKUS_USERNAME_SQL=root
+      - QUARKUS_PASSWORD_SQL=Apigraphql123
+      - QUARKUS_URL_SQL=jdbc:mysql://mysql:3306
     depends_on:
-      - Infinispan
+      - infinispan
+      - mysql
     networks:
       - app-network
 
-  Infinispan:
-    container_name: "Infinispan"
+  infinispan:
     image: quay.io/infinispan/server:15.0
     environment:
       USER: admin
@@ -28,6 +27,23 @@ services:
       - "11222:11222"
     networks:
       - app-network
+  
+  mysql:
+    restart: always
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: Catalog
+      MYSQL_ROOT_PASSWORD: Apigraphql123
+    ports: 
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
 
 networks:
   app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:

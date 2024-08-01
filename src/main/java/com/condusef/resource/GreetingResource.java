@@ -24,7 +24,7 @@ public class GreetingResource {
         try {
             Connection connection = DatabaseConnection.getConnection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT TOP 1 * FROM CPMexicano");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Catalog.CPMexicano LIMIT 1");
             
                 while (resultSet.next()) {      
                 Registro = resultSet.getString("d_codigo") + " " + 

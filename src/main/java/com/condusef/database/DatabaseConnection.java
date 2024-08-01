@@ -15,15 +15,20 @@ public class DatabaseConnection {
 
     public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
+
             
             Config config = ConfigProvider.getConfig();
             String URL = config.getValue("quarkus.datasource.jdbc.url", String.class);
             String USER = config.getValue("quarkus.datasource.username", String.class);
             String PASSWORD = config.getValue("quarkus.datasource.password", String.class);
 
+            System.out.println(URL);
+            System.out.println(USER);
+            System.out.println(PASSWORD);
+
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
         }else{
-            System.out.println("Connection failed");
+            System.out.println("''''''''''''''''''''''''''''''''''Connection failed'''''''''________________________-------------------------------------------------------------------------------------------------'''''''''''''''''''''''''");
         
         }
         return connection;

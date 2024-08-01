@@ -3,7 +3,7 @@
 #
 # Before building the container image run:
 #
-#                 
+# ./mvnw package                
 #
 # Then, build the image with:
 #
@@ -88,8 +88,7 @@ COPY --chown=185 target/quarkus-app/lib/ /deployments/lib/
 COPY --chown=185 target/quarkus-app/*.jar /deployments/
 COPY --chown=185 target/quarkus-app/app/ /deployments/app/
 COPY --chown=185 target/quarkus-app/quarkus/ /deployments/quarkus/
-#COPY --chown=185 target/classes/application.properties /deployments/application.properties/
-
+COPY --chown=185 target/classes/application.properties /deployments/
 
 
 EXPOSE 8080

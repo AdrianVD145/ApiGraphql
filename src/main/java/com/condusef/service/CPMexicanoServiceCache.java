@@ -34,7 +34,7 @@ public class CPMexicanoServiceCache {
             Connection connection = DatabaseConnection.getConnection();
 
             PreparedStatement statement = connection
-                    .prepareStatement("SELECT * FROM CPMexicano WHERE d_estado = ?");
+                    .prepareStatement("SELECT * FROM Catalog.CPMexicano WHERE d_estado = ?");
             statement.setString(1, EstadoCp);
             ResultSet resultSet = statement.executeQuery();
 

@@ -24,7 +24,7 @@ public class CPMexicanoService {
 
             Connection connection = DatabaseConnection.getConnection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT TOP 50 * FROM CPMexicano");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Catalog.CPMexicano LIMIT 50");
 
             while (resultSet.next()) {
                 CPMexicano cpMexicano = new CPMexicano();
