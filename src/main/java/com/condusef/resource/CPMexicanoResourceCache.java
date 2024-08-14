@@ -65,8 +65,7 @@ public class CPMexicanoResourceCache {
     }
 
     private int sanitizarAlcaldia(int alcaldia) {
-        // Validar que la alcaldía esté dentro de un rango válido (por ejemplo, entre 0
-        // y 99)
+        // Validar que la alcaldía esté dentro de un rango válido (por ejemplo, entre  y 99)
         if (alcaldia < 0 || alcaldia > 99) {
             throw new IllegalArgumentException("Alcaldía inválida");
         }
