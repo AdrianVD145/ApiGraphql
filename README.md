@@ -15,6 +15,7 @@ La api se esta probando con la herramienta POSTMAN
 https://github.com/AdrianVD145/ApiGraphql/blob/main/AssetsReadme/Login%20Postman.png
 
 5.- Acceder a las querys de graphql
+https://raw.githubusercontent.com/AdrianVD145/ApiGraphql/main/AssetsReadme/Querys%20Postman.png
 https://github.com/AdrianVD145/ApiGraphql/blob/main/AssetsReadme/Querys%20Postman.png
 
 # Notas
