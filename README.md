@@ -1,20 +1,20 @@
 # Recursos
 Para poder ejecutar la api se requieren de dos contenedores adicionales de docker:
 
-Infinispan: docker run -it -p 11222:11222 -e USER="admin" -e PASS="password" quay.io/infinispan/server:15.0
-Mysql: docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Apigraphql123 -d mysql:latest
+- **Infinispan**: docker run -it -p 11222:11222 -e USER="admin" -e PASS="password" quay.io/infinispan/server:15.0
+- **Mysql**: docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Apigraphql123 -d mysql:latest
 
 La api se esta probando con la herramienta POSTMAN
 
 # Pasos
-1.- Iniciar los contenedores de infinispan y mysql
-\n 2.- Se requiere una base de datos inicial, ejecutar el script Catalog, en nuestra Base de datos
-\n 3.- Ejecutar el siguiente Comando: "quarkus dev" en la consola
+1. Iniciar los contenedores de infinispan y mysql
+2. Se requiere una base de datos inicial, ejecutar el script Catalog, en nuestra Base de datos
+3. Ejecutar el siguiente Comando: "quarkus dev" en la consola
 
-\n 4.- Para poder acceder a las querys de graphql es necesario primero autenticarse con el endpoint Login:
+4. Para poder acceder a las querys de graphql es necesario primero autenticarse con el endpoint Login:
 ![Login Postman](https://github.com/user-attachments/assets/c9c3c9f2-beff-4815-ad5d-66aa6f4627f2)
 
-\n 5.- Acceder a las querys de graphql
+5. Acceder a las querys de graphql
 ![Querys Postman](https://github.com/user-attachments/assets/bd41b35b-133c-467f-83c3-255dde76473e)
 
 
@@ -24,7 +24,7 @@ La api se esta probando con la herramienta POSTMAN
 Si se quiere utilizar docker compose, existe un pequeño problema con las variables de entorno que se pasan como parametros en las properties
 para solucionarlo, primero se compila el proyecto con las variables a utilizar en el docker compose con el comando:
 
-\n mvn -DskipTests=true package
+- mvn -DskipTests=true package
 
 despues comentamos las configuraciones inciales del properties y descomentamos las que utilizaremos para el docker compose:
 ![Nota properties](https://github.com/user-attachments/assets/a979abed-1d60-4fd0-8cc7-ea46cf47ca3e)
