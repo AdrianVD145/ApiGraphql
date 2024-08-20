@@ -12,11 +12,12 @@ La api se esta probando con la herramienta POSTMAN
 3.- Ejecutar el siguiente Comando: "quarkus dev" en la consola
 
 4.- Para poder acceder a las querys de graphql es necesario primero autenticarse con el endpoint Login:
-https://github.com/AdrianVD145/ApiGraphql/blob/main/AssetsReadme/Login%20Postman.png
+![Login Postman](https://github.com/user-attachments/assets/c9c3c9f2-beff-4815-ad5d-66aa6f4627f2)
 
 5.- Acceder a las querys de graphql
-![Login Postman](https://github.com/user-attachments/assets/c9c3c9f2-beff-4815-ad5d-66aa6f4627f2)
-https://github.com/AdrianVD145/ApiGraphql/blob/main/AssetsReadme/Querys%20Postman.png
+![Querys Postman](https://github.com/user-attachments/assets/bd41b35b-133c-467f-83c3-255dde76473e)
+
+
 
 # Notas
 
@@ -26,7 +27,8 @@ para solucionarlo, primero se compila el proyecto con las variables a utilizar e
  mvn -DskipTests=true package
 
 despues comentamos las configuraciones inciales del properties y descomentamos las que utilizaremos para el docker compose:
-https://github.com/AdrianVD145/ApiGraphql/blob/main/AssetsReadme/Nota%20properties.png
+![Nota properties](https://github.com/user-attachments/assets/a979abed-1d60-4fd0-8cc7-ea46cf47ca3e)
+
 
 Despues ejecutamos los comandos:
 docker compose build
