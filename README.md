@@ -1,3 +1,44 @@
+# Recursos
+Para poder ejecutar la api se requieren de dos contenedores adicionales de docker:
+
+Infinispan: docker run -it -p 11222:11222 -e USER="admin" -e PASS="password" quay.io/infinispan/server:15.0
+Mysql: docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Apigraphql123 -d mysql:latest
+
+La api se esta probando con la herramienta POSTMAN
+
+# Pasos
+1.- Iniciar los contenedores de infinispan y mysql
+2.- Se requiere una base de datos inicial, ejecutar el script Catalog, en nuestra Base de datos
+3.- Ejecutar el siguiente Comando: "quarkus dev" en la consola
+
+4.- Para poder acceder a las querys de graphql es necesario primero autenticarse con el endpoint Login:
+https://github.com/AdrianVD145/ApiGraphql/blob/main/AssetsReadme/Login%20Postman.png
+
+5.- Acceder a las querys de graphql
+https://github.com/AdrianVD145/ApiGraphql/blob/main/AssetsReadme/Querys%20Postman.png
+
+# Notas
+
+Si se quiere utilizar docker compose, existe un pequeño problema con las variables de entorno que se pasan como parametros en las properties
+para solucionarlo, primero se compila el proyecto con las variables a utilizar en el docker compose con el comando:
+
+ mvn -DskipTests=true package
+
+despues comentamos las configuraciones inciales del properties y descomentamos las que utilizaremos para el docker compose:
+https://github.com/AdrianVD145/ApiGraphql/blob/main/AssetsReadme/Nota%20properties.png
+
+Despues ejecutamos los comandos:
+docker compose build
+docker compose up -d
+
+# Warnings
+para docker compose, Si el contenedor falla es posible que una de las posibles causas es que el inicio del servicio de infinispan no termino de cargarse, solo volver a correr el contenedor de la aplicacion
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # ApiGraphql
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
